@@ -1,11 +1,76 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Process from "../components/Process.astro";
+import About from "../components/About.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Olimindlab — Diseño & Marketing Digital"
+  description="Consultoría de branding, diseño web y marketing digital. Transformamos marcas en experiencias memorables."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <Services />
+    <Process />
+    <About />
+    <Testimonials />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>
+
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const revealElements = document.querySelectorAll(
+    ".service-card, .process__step, .testimonial, .about__value, .contact__field"
+  );
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+  );
+
+  revealElements.forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+  });
+</script>

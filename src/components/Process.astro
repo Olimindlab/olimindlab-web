@@ -1,0 +1,246 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "Descubrimiento",
+    desc: "Entendemos a fondo tu negocio, tu público objetivo y tus objetivos. Una conversación profunda que sienta las bases de todo lo que viene.",
+    duration: "1–2 semanas",
+  },
+  {
+    num: "02",
+    title: "Estrategia",
+    desc: "Definimos el camino: posicionamiento, propuesta de valor, tono de comunicación y plan de acción. Nada se deja al azar.",
+    duration: "1 semana",
+  },
+  {
+    num: "03",
+    title: "Diseño",
+    desc: "Damos forma visual a la estrategia. Conceptualizamos, prototipamos y refinamos hasta conseguir algo que te represente de verdad.",
+    duration: "2–4 semanas",
+  },
+  {
+    num: "04",
+    title: "Implementación",
+    desc: "Ejecutamos el proyecto: desarrollo web, activación de canales, lanzamiento de campañas. Todo con atención al detalle y plazos claros.",
+    duration: "2–6 semanas",
+  },
+  {
+    num: "05",
+    title: "Seguimiento",
+    desc: "Medimos, analizamos y optimizamos. El trabajo no acaba en el lanzamiento: acompañamos el crecimiento de tu marca a largo plazo.",
+    duration: "Continuo",
+  },
+];
+---
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="process__header">
+      <div class="process__label">
+        <span class="process__label-line"></span>
+        <span>Cómo trabajo</span>
+      </div>
+
+      <div class="process__header-right">
+        <h2 class="process__title">
+          Un proceso
+          <em>claro</em>
+        </h2>
+        <p class="process__intro">
+          Cada proyecto es único, pero el método es siempre el mismo:
+          transparencia, comunicación y resultados medibles.
+        </p>
+      </div>
+    </div>
+
+    <div class="process__steps">
+      {steps.map((step, i) => (
+        <div class="process__step">
+          <div class="process__step-left">
+            <span class="process__step-num">{step.num}</span>
+            {i < steps.length - 1 && <span class="process__step-line"></span>}
+          </div>
+          <div class="process__step-content">
+            <div class="process__step-head">
+              <h3 class="process__step-title">{step.title}</h3>
+              <span class="process__step-duration">{step.duration}</span>
+            </div>
+            <p class="process__step-desc">{step.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: 8rem 0;
+    background: var(--bg-2);
+    position: relative;
+  }
+
+  .process::before,
+  .process::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .process::before { top: 0; }
+  .process::after { bottom: 0; }
+
+  .process__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+    align-items: start;
+  }
+
+  .process__label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 0.5rem;
+  }
+
+  .process__label-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .process__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .process__title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .process__intro {
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 38ch;
+  }
+
+  .process__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .process__step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .process__step:last-child {
+    border-bottom: none;
+  }
+
+  .process__step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-top: 0.25rem;
+  }
+
+  .process__step-num {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .process__step-line {
+    display: block;
+    width: 1px;
+    flex: 1;
+    min-height: 40px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+    margin-top: 1rem;
+  }
+
+  .process__step-content {
+    padding-bottom: 1rem;
+  }
+
+  .process__step-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .process__step-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .process__step:hover .process__step-title {
+    color: var(--accent);
+  }
+
+  .process__step-duration {
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--border);
+    background: var(--bg-3);
+  }
+
+  .process__step-desc {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+
+  @media (max-width: 768px) {
+    .process__header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .process__step {
+      grid-template-columns: 50px 1fr;
+      gap: 1.25rem;
+    }
+
+    .process__step-head {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
