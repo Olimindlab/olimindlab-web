@@ -1,0 +1,181 @@
+---
+const projects = [
+  {
+    num: "01",
+    client: "Estudio Bloom",
+    category: "Branding",
+    year: "2025",
+    desc: "Identidad visual completa para un estudio de interiorismo premium. Logo, paleta, tipografía y manual de marca.",
+    bg: "#E8E4DC",
+  },
+  {
+    num: "02",
+    client: "TechForward",
+    category: "Web Design",
+    year: "2025",
+    desc: "Rediseño del sitio corporativo de una startup tecnológica B2B. UX research, diseño y desarrollo en 6 semanas.",
+    bg: "#DDE4E8",
+  },
+  {
+    num: "03",
+    client: "Casa Miel",
+    category: "Social Media",
+    year: "2024",
+    desc: "Estrategia y gestión de redes sociales para marca de alimentación artesanal. De 200 a 8.000 seguidores en 6 meses.",
+    bg: "#E8DDD4",
+  },
+  {
+    num: "04",
+    client: "Nexus Platform",
+    category: "Marketing Digital",
+    year: "2024",
+    desc: "Estrategia de performance marketing. Reducción del CAC en 40% y x3 en conversiones en el primer trimestre.",
+    bg: "#DDE8E0",
+  },
+];
+---
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+
+    <div class="portfolio__header">
+      <p class="portfolio__label">PORTFOLIO</p>
+      <div class="portfolio__header-right">
+        <h2 class="portfolio__title">Trabajo<br />seleccionado.</h2>
+        <p class="portfolio__sub">Proyectos reales, resultados medibles.</p>
+      </div>
+    </div>
+
+    <div class="portfolio__grid">
+      {projects.map((p) => (
+        <article class="project" style={`--project-bg: ${p.bg}`}>
+          <div class="project__image" aria-label={`Proyecto ${p.client}`}></div>
+          <div class="project__info">
+            <div class="project__meta">
+              <span class="project__num">{p.num}</span>
+              <span class="project__category">{p.category}</span>
+              <span class="project__year">{p.year}</span>
+            </div>
+            <h3 class="project__client">{p.client}</h3>
+            <p class="project__desc">{p.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    padding: 10rem 0;
+  }
+
+  .portfolio__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 5rem;
+  }
+
+  .portfolio__label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    align-self: start;
+    padding-top: 0.5rem;
+  }
+
+  .portfolio__title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .portfolio__sub {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__image {
+    aspect-ratio: 4/3;
+    background: var(--project-bg);
+    width: 100%;
+  }
+
+  .project__info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .project__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .project__num {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .project__category {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .project__year {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  .project__client {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .project__desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio__header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .portfolio__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

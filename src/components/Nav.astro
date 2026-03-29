@@ -1,36 +1,32 @@
 ---
 ---
 
-<nav class="nav" id="nav">
+<header class="nav" id="nav">
   <div class="container nav__inner">
-    <a href="#inicio" class="nav__logo">
-      <span class="nav__logo-main">OLIMIND</span><span class="nav__logo-accent">LAB</span>
-    </a>
+    <a href="#inicio" class="nav__logo">Olimindlab</a>
 
-    <ul class="nav__links">
-      <li><a href="#servicios" class="nav__link">Servicios</a></li>
-      <li><a href="#proceso" class="nav__link">Proceso</a></li>
-      <li><a href="#sobre-mi" class="nav__link">Sobre mí</a></li>
-      <li><a href="#testimonios" class="nav__link">Clientes</a></li>
-      <li><a href="#contacto" class="nav__cta">Hablemos</a></li>
-    </ul>
+    <nav class="nav__links" aria-label="Navegación principal">
+      <a href="#servicios" class="nav__link">Servicios</a>
+      <a href="#portfolio" class="nav__link">Portfolio</a>
+      <a href="#sobre-mi" class="nav__link">Sobre mí</a>
+      <a href="#contacto" class="nav__link">Contacto</a>
+      <a href="#contacto" class="nav__cta">Hablemos</a>
+    </nav>
 
-    <button class="nav__burger" id="burger" aria-label="Abrir menú">
-      <span></span>
+    <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
       <span></span>
       <span></span>
     </button>
   </div>
-</nav>
+</header>
 
-<div class="nav__mobile" id="mobile-menu">
-  <ul class="nav__mobile-links">
-    <li><a href="#servicios" class="nav__mobile-link">Servicios</a></li>
-    <li><a href="#proceso" class="nav__mobile-link">Proceso</a></li>
-    <li><a href="#sobre-mi" class="nav__mobile-link">Sobre mí</a></li>
-    <li><a href="#testimonios" class="nav__mobile-link">Clientes</a></li>
-    <li><a href="#contacto" class="nav__mobile-link nav__mobile-cta">Hablemos</a></li>
-  </ul>
+<div class="nav__drawer" id="drawer" aria-hidden="true">
+  <nav class="nav__drawer-links">
+    <a href="#servicios" class="nav__drawer-link">Servicios</a>
+    <a href="#portfolio" class="nav__drawer-link">Portfolio</a>
+    <a href="#sobre-mi" class="nav__drawer-link">Sobre mí</a>
+    <a href="#contacto" class="nav__drawer-link">Contacto</a>
+  </nav>
 </div>
 
 <style>
@@ -40,158 +36,121 @@
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1.25rem 0;
-    transition: background 0.3s ease, padding 0.3s ease;
+    background: var(--white);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
   }
 
   .nav.scrolled {
-    background: rgba(8, 8, 8, 0.95);
-    backdrop-filter: blur(12px);
-    padding: 0.875rem 0;
-    border-bottom: 1px solid var(--border);
+    border-color: var(--border);
   }
 
   .nav__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 72px;
   }
 
   .nav__logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s;
-  }
-
-  .nav__logo:hover {
-    opacity: 0.8;
-  }
-
-  .nav__logo-accent {
-    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: -0.01em;
+    color: var(--black);
   }
 
   .nav__links {
     display: flex;
     align-items: center;
     gap: 2.5rem;
-    list-style: none;
   }
 
   .nav__link {
     font-size: 0.875rem;
     font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--muted);
     transition: color 0.2s;
-    position: relative;
-  }
-
-  .nav__link::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width 0.3s ease;
   }
 
   .nav__link:hover {
-    color: var(--text);
-  }
-
-  .nav__link:hover::after {
-    width: 100%;
+    color: var(--black);
   }
 
   .nav__cta {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.625rem 1.5rem;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    transition: background 0.2s, color 0.2s;
+    color: var(--white);
+    background: var(--black);
+    padding: 0.625rem 1.25rem;
+    transition: background 0.2s;
   }
 
   .nav__cta:hover {
     background: var(--accent);
-    color: var(--text);
   }
 
   .nav__burger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .nav__burger span {
     display: block;
-    width: 24px;
-    height: 1.5px;
-    background: var(--text);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: 22px;
+    height: 1px;
+    background: var(--black);
+    transition: transform 0.3s, opacity 0.3s;
   }
 
-  .nav__burger.open span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
+  .nav__burger.open span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
   }
 
-  .nav__burger.open span:nth-child(2) {
-    opacity: 0;
+  .nav__burger.open span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 
-  .nav__burger.open span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
-  }
-
-  .nav__mobile {
+  .nav__drawer {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--bg);
+    inset: 0;
+    background: var(--white);
     z-index: 99;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateX(100%);
+    transform: translateY(-100%);
     transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
   }
 
-  .nav__mobile.open {
-    transform: translateX(0);
+  .nav__drawer.open {
+    transform: translateY(0);
   }
 
-  .nav__mobile-links {
-    list-style: none;
-    text-align: center;
+  .nav__drawer-links {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
   }
 
-  .nav__mobile-link {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
+  .nav__drawer-link {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.02em;
     transition: color 0.2s;
   }
 
-  .nav__mobile-link:hover,
-  .nav__mobile-cta {
+  .nav__drawer-link:hover {
     color: var(--accent);
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .nav__links {
       display: none;
     }
@@ -205,27 +164,26 @@
 <script>
   const nav = document.getElementById("nav");
   const burger = document.getElementById("burger");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileLinks = document.querySelectorAll(".nav__mobile-link");
+  const drawer = document.getElementById("drawer");
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      nav?.classList.add("scrolled");
-    } else {
-      nav?.classList.remove("scrolled");
-    }
+    nav?.classList.toggle("scrolled", window.scrollY > 10);
   });
 
   burger?.addEventListener("click", () => {
-    burger.classList.toggle("open");
-    mobileMenu?.classList.toggle("open");
-    document.body.style.overflow = mobileMenu?.classList.contains("open") ? "hidden" : "";
+    const isOpen = burger.classList.toggle("open");
+    drawer?.classList.toggle("open", isOpen);
+    burger.setAttribute("aria-expanded", String(isOpen));
+    drawer?.setAttribute("aria-hidden", String(!isOpen));
+    document.body.style.overflow = isOpen ? "hidden" : "";
   });
 
-  mobileLinks.forEach((link) => {
+  document.querySelectorAll(".nav__drawer-link").forEach((link) => {
     link.addEventListener("click", () => {
       burger?.classList.remove("open");
-      mobileMenu?.classList.remove("open");
+      drawer?.classList.remove("open");
+      burger?.setAttribute("aria-expanded", "false");
+      drawer?.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     });
   });

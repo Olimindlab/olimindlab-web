@@ -5,131 +5,68 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__top">
-      <div class="footer__brand">
-        <a href="#inicio" class="footer__logo">
-          <span>OLIMIND</span><span class="footer__logo-accent">LAB</span>
-        </a>
-        <p class="footer__tagline">
-          Diseño y marketing digital<br />con propósito e intención.
-        </p>
-      </div>
-
-      <nav class="footer__nav">
-        <div class="footer__nav-col">
-          <h4 class="footer__nav-title">Servicios</h4>
-          <ul class="footer__nav-list">
-            <li><a href="#servicios">Branding</a></li>
-            <li><a href="#servicios">Diseño Web</a></li>
-            <li><a href="#servicios">Marketing Digital</a></li>
-            <li><a href="#servicios">Redes Sociales</a></li>
-          </ul>
-        </div>
-        <div class="footer__nav-col">
-          <h4 class="footer__nav-title">Empresa</h4>
-          <ul class="footer__nav-list">
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#testimonios">Clientes</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer__nav-col">
-          <h4 class="footer__nav-title">Conecta</h4>
-          <ul class="footer__nav-list">
-            <li><a href="mailto:hola@olimindlab.com">Email</a></li>
-            <li><a href="https://instagram.com/olimindlab" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://linkedin.com/in/olimindlab" target="_blank" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
+      <a href="#inicio" class="footer__logo">Olimindlab</a>
+      <p class="footer__tagline">Diseño y marketing para marcas que quieren destacar.</p>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#servicios" class="footer__link">Servicios</a>
+        <a href="#portfolio" class="footer__link">Portfolio</a>
+        <a href="#sobre-mi" class="footer__link">Sobre mí</a>
+        <a href="#contacto" class="footer__link">Contacto</a>
       </nav>
     </div>
 
     <div class="footer__bottom">
-      <p class="footer__copy">
-        © {year} Olimindlab. Todos los derechos reservados.
-      </p>
+      <p class="footer__copy">© {year} Olimindlab. Todos los derechos reservados.</p>
       <div class="footer__legal">
-        <a href="#">Política de privacidad</a>
-        <a href="#">Aviso legal</a>
+        <a href="#" class="footer__legal-link">Política de privacidad</a>
+        <a href="#" class="footer__legal-link">Aviso legal</a>
       </div>
-      <p class="footer__made">
-        Hecho con <span class="footer__heart">♥</span> en España
-      </p>
     </div>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 1px solid var(--border);
-    background: var(--bg);
     padding: 5rem 0 2.5rem;
+    border-top: 1px solid var(--border);
   }
 
   .footer__top {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 4rem;
+    grid-template-columns: 200px 1fr auto;
+    align-items: center;
+    gap: 3rem;
     padding-bottom: 4rem;
     border-bottom: 1px solid var(--border);
     margin-bottom: 2rem;
   }
 
   .footer__logo {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 1.25rem;
-    transition: opacity 0.2s;
-  }
-
-  .footer__logo:hover {
-    opacity: 0.8;
-  }
-
-  .footer__logo-accent {
-    color: var(--accent);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--black);
   }
 
   .footer__tagline {
-    color: var(--text-muted);
     font-size: 0.9375rem;
-    line-height: 1.7;
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   .footer__nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    justify-self: end;
-    width: 100%;
-  }
-
-  .footer__nav-title {
-    font-size: 0.6875rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-    font-weight: 500;
-  }
-
-  .footer__nav-list {
-    list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    gap: 2rem;
   }
 
-  .footer__nav-list a {
-    font-size: 0.9375rem;
-    color: var(--text-muted);
+  .footer__link {
+    font-size: 0.875rem;
+    color: var(--muted);
     transition: color 0.2s;
   }
 
-  .footer__nav-list a:hover {
-    color: var(--text);
+  .footer__link:hover {
+    color: var(--black);
   }
 
   .footer__bottom {
@@ -137,12 +74,11 @@ const year = new Date().getFullYear();
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    flex-wrap: wrap;
   }
 
   .footer__copy {
     font-size: 0.8125rem;
-    color: var(--text-muted);
+    color: var(--muted);
   }
 
   .footer__legal {
@@ -150,45 +86,31 @@ const year = new Date().getFullYear();
     gap: 1.5rem;
   }
 
-  .footer__legal a {
+  .footer__legal-link {
     font-size: 0.8125rem;
-    color: var(--text-muted);
+    color: var(--muted);
     transition: color 0.2s;
   }
 
-  .footer__legal a:hover {
-    color: var(--text);
+  .footer__legal-link:hover {
+    color: var(--black);
   }
 
-  .footer__made {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
-  }
-
-  .footer__heart {
-    color: var(--accent);
-  }
-
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     .footer__top {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 1.5rem;
     }
 
     .footer__nav {
-      justify-self: start;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .footer__nav {
-      grid-template-columns: 1fr 1fr;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .footer__bottom {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 0.75rem;
     }
   }
 </style>
