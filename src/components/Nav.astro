@@ -3,7 +3,9 @@
 
 <header class="nav" id="nav">
   <div class="container nav__inner">
-    <a href="#inicio" class="nav__logo">Olimindlab</a>
+    <a href="#inicio" class="nav__logo">
+      <img src="/logo.png" alt="Olimindlab" class="nav__logo-img" />
+    </a>
 
     <nav class="nav__links" aria-label="Navegación principal">
       <a href="#servicios" class="nav__link">Servicios</a>
@@ -53,10 +55,14 @@
   }
 
   .nav__logo {
-    font-weight: 700;
-    font-size: 1.0625rem;
-    letter-spacing: -0.01em;
-    color: var(--black);
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
   }
 
   .nav__links {
