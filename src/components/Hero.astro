@@ -54,6 +54,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: #ffffff;
+    color: #0a0a0a;
   }
 
   .hero__inner {
@@ -119,24 +121,26 @@
   }
 
   .hero__services {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #e8e8e8;
+    background-color: #ffffff;
   }
 
   .hero__services-inner {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: row;
   }
 
   .hero__service {
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
-    padding: 2rem 0;
-    border-right: 1px solid var(--border);
+    padding: 2rem 2.5rem 2rem 0;
+    flex: 1;
+    border-right: 1px solid #e8e8e8;
   }
 
   .hero__service:first-child {
-    border-left: none;
+    padding-left: 0;
   }
 
   .hero__service:last-child {
@@ -170,7 +174,12 @@
     }
 
     .hero__services-inner {
-      grid-template-columns: repeat(2, 1fr);
+      flex-wrap: wrap;
+    }
+
+    .hero__service {
+      flex: 0 0 50%;
+      padding: 1.5rem 1.5rem 1.5rem 0;
     }
 
     .hero__service:nth-child(2) {
@@ -179,13 +188,7 @@
 
     .hero__service:nth-child(3),
     .hero__service:nth-child(4) {
-      border-top: 1px solid var(--border);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero__services-inner {
-      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid #e8e8e8;
     }
   }
 </style>
