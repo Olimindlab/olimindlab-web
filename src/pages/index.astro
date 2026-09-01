@@ -1,42 +1,96 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
-import Services from "../components/Services.astro";
-import Portfolio from "../components/Portfolio.astro";
-import About from "../components/About.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
+
+const services = [
+  { number: "01", title: "Identidad & marca", text: "Construimos una identidad clara, coherente y reconocible. Una marca que explica quién eres antes de que tengas que hacerlo.", tags: ["Estrategia", "Naming", "Identidad visual", "Tono de voz"] },
+  { number: "02", title: "Web & experiencia", text: "Diseñamos espacios digitales sencillos de entender, agradables de recorrer y pensados para convertir atención en acción.", tags: ["UX/UI", "Web design", "Landing pages", "Optimización"] },
+  { number: "03", title: "Marketing inteligente", text: "Unimos estrategia, contenido y datos para que cada acción tenga un motivo, una dirección y un resultado medible.", tags: ["Estrategia digital", "Contenido", "Analítica", "Growth"] },
+  { number: "04", title: "IA & automatización", text: "Integramos herramientas de IA en procesos reales para ahorrar tiempo, mejorar decisiones y abrir nuevas posibilidades de crecimiento.", tags: ["IA aplicada", "CRM", "Automatización", "Procesos"] },
+];
+
+const projects = [
+  { number: "01", title: "NR Coffee & Tea", type: "Marca · Packaging · Estrategia", year: "2026" },
+  { number: "02", title: "Venair", type: "Dirección de arte · Catálogos", year: "2026" },
+  { number: "03", title: "Depivital", type: "Contenido · Social Media", year: "2025" },
+];
 ---
 
 <Layout
-  title="Olimindlab — Diseño & Marketing Digital"
-  description="Consultoría de diseño y marketing para marcas que quieren destacar de verdad."
+  title="OLIMIND lab — The Business Evolution Lab"
+  description="Diseño, estrategia e inteligencia artificial para ayudar a pequeñas empresas a evolucionar con claridad y propósito."
 >
-  <Nav />
-  <main>
-    <Hero />
-    <Services />
-    <Portfolio />
-    <About />
-    <Testimonials />
-    <Contact />
-  </main>
-  <Footer />
-</Layout>
+  <main id="inicio">
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="OLIMIND lab, inicio"><img src="/logo-olimindlab.png" alt="OLIMIND lab" /></a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#olimind">Sobre OLIMIND</a>
+      </nav>
+      <a class="header-cta" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
+    </header>
 
-<script>
-  // Smooth scroll con offset para nav fija
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      const href = anchor.getAttribute("href");
-      if (!href || href === "#") return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 72;
-      window.scrollTo({ top, behavior: "smooth" });
-    });
-  });
-</script>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-orbit" aria-hidden="true"><span></span></div>
+      <p class="eyebrow">The business evolution lab</p>
+      <h1 id="hero-title">Tu empresa puede<br />seguir haciendo lo mismo<br /><span>o pasar a otro nivel.</span></h1>
+      <div class="hero-bottom">
+        <p>IA · ESTRATEGIA · MARCA<br class="mobile-break" /> · AUTOMATIZACIÓN · GROWTH</p>
+        <a class="circle-link" href="#servicios" aria-label="Descubrir cómo evolucionar"><span>Descubrir</span><b aria-hidden="true">↓</b></a>
+      </div>
+      <span class="hero-index" aria-hidden="true">01 / 05</span>
+    </section>
+
+    <section class="manifesto section-pad">
+      <p class="section-label">Una nueva manera de avanzar</p>
+      <div class="manifesto-copy"><p>No necesitas hacer más.</p><h2>Necesitas saber qué hacer,<br />por qué hacerlo y cómo <em>evolucionarlo.</em></h2></div>
+      <p class="manifesto-note">Diseño, estrategia e inteligencia artificial trabajando como un único sistema.</p>
+    </section>
+
+    <section class="services section-pad" id="servicios">
+      <div class="section-heading"><p class="section-label light">Servicios</p><h2>Todo conecta.<br />Todo tiene un propósito.</h2></div>
+      <div class="service-list">
+        {services.map((service) => (
+          <article class="service">
+            <span class="service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p>
+            <ul aria-label={`Áreas de ${service.title}`}>{service.tags.map((tag) => <li>{tag}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="projects section-pad" id="proyectos">
+      <div class="section-heading split-heading"><p class="section-label">Trabajo seleccionado</p><h2>Ideas que toman forma.<br /><span>Marcas que avanzan.</span></h2></div>
+      <div class="project-list">
+        {projects.map((project) => (
+          <article class="project"><span>{project.number}</span><h3>{project.title}</h3><p>{project.type}</p><time>{project.year}</time><b aria-hidden="true">↗</b></article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about section-pad" id="olimind">
+      <div class="about-mark" aria-hidden="true"><span>O</span><i></i></div>
+      <div class="about-copy">
+        <p class="section-label light">Sobre OLIMIND lab</p>
+        <h2>La creatividad abre caminos.<br />La estrategia decide <em>cuál recorrer.</em></h2>
+        <p>OLIMIND lab nace para ayudar a pequeñas empresas a evolucionar con claridad. Conectamos diseño, marketing e inteligencia artificial para transformar buenas ideas en sistemas de crecimiento reales.</p>
+        <p>No empezamos por la herramienta. Empezamos por entender el negocio, ordenar lo importante y encontrar el siguiente movimiento.</p>
+        <a href="#contacto">Conocer el enfoque <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="contact section-pad" id="contacto">
+      <p class="section-label">Contacto</p>
+      <div class="contact-intro"><h2>¿Preparada para pasar<br />a <span>otro nivel?</span></h2><p>Cuéntame dónde estás y hacia dónde quieres ir. Empezaremos por una conversación clara.</p></div>
+      <form class="contact-form">
+        <label>Nombre<input type="text" name="name" placeholder="Tu nombre" required /></label>
+        <label>Email<input type="email" name="email" placeholder="tu@email.com" required /></label>
+        <label class="full">Cuéntame brevemente tu proyecto<textarea name="message" placeholder="¿Qué quieres transformar?" rows="3" required></textarea></label>
+        <button type="submit">Enviar mensaje <span aria-hidden="true">↗</span></button>
+      </form>
+    </section>
+
+    <footer>
+      <img src="/logo-olimindlab.png" alt="OLIMIND lab" /><p>IA · ESTRATEGIA · PROPÓSITO</p>
+      <div><a href="mailto:hola@olimindlab.com">hola@olimindlab.com</a><span>© 2026 OLIMIND lab</span></div>
+    </footer>
+  </main>
+</Layout>
